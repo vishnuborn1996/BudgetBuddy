@@ -2,6 +2,7 @@
 using LiveCharts.Wpf;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Media;
 
 namespace BudgetBuddy.ViewModels
 {
@@ -26,22 +27,27 @@ namespace BudgetBuddy.ViewModels
 		private void SetupPieChart()
 		{
 			MyPieChart = new SeriesCollection
-			{
-				new PieSeries
-				{
-					Title = "Income",
-					Values = new ChartValues<double> { 5000 }, // Your income value
+            {
+            	new PieSeries
+            	{
+            		Title = "Income",
+            		Values = new ChartValues<double> { 5000 }, // Your income value
                     DataLabels = true,
-					LabelPoint = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})"
-				},
-				new PieSeries
-				{
-					Title = "Expenditure",
-					Values = new ChartValues<double> { 3000 }, // Your expenditure value
+            		LabelPoint = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})",
+            		Fill = new SolidColorBrush(Color.FromRgb(26, 188, 156)), // Teal color
+                    Foreground = Brushes.White // White labels for readability
+                },
+            	new PieSeries
+            	{
+            		Title = "Expenditure",
+            		Values = new ChartValues<double> { 3000 }, // Your expenditure value
                     DataLabels = true,
-					LabelPoint = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})"
-				}
-			};
+            		LabelPoint = chartPoint => $"{chartPoint.Y} ({chartPoint.Participation:P})",
+            		Fill = new SolidColorBrush(Color.FromRgb(243, 156, 18)), // Amber color
+                    Foreground = Brushes.White // White labels for readability
+                }
+            };
+            
 
 			OnPropertyChanged(nameof(MyPieChart));
 		}
