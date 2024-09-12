@@ -1,0 +1,37 @@
+<UserControl x:Class="BudgetBuddy.Views.ManageCategoriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Manage Categories" FontSize="24" FontWeight="Bold" Foreground="White" 
+                   HorizontalAlignment="Center" Margin="10"/>
+
+        <!-- List of Categories -->
+        <Border Grid.Row="1" Background="#333333" CornerRadius="10" Margin="10" Padding="10">
+            <ListView x:Name="CategoryListView" Background="Transparent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="{Binding}" FontSize="16" Foreground="White" Width="200"/>
+                            <Button Content="Rename" Width="75" Height="30" Margin="5"/>
+                            <Button Content="Delete" Width="75" Height="30" Margin="5"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
+
+        <!-- Add New Category Form -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <TextBox x:Name="NewCategoryTextBox" Width="200" Height="30" Margin="5" />
+            <Button Content="Add Category" Width="150" Height="40" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
